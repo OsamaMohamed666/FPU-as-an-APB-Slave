@@ -1,0 +1,34 @@
+m255
+K4
+z2
+!s11f vlog 2021.1 2021.01, Jan 19 2021
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dO:/COURSES/Verfication/UVM Examples/FPU_APB/FPU-as-an-APB-Slave/DUT
+vFPU_apb_tb
+!s110 1755038511
+!i10b 1
+!s100 KOcL:VBN8NJVLf:e_PaC;1
+IJYeBPo0d@o3IdFaco_8?M2
+R0
+w1738250821
+8FPU_apb_tb.v
+FFPU_apb_tb.v
+!i122 0
+L0 1 164
+VDg1SIo80bB@j0V0VzS_@n1
+OL;L;2021.1;73
+r1
+!s85 0
+31
+!s108 1755038511.000000
+!s107 FPU_apb_tb.v|
+!s90 FPU_apb_tb.v|
+!i113 0
+o-L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+tCvgOpt 0
+n@f@p@u_apb_tb
