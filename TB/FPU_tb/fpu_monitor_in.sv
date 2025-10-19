@@ -32,7 +32,7 @@ class fpu_monitor_in extends uvm_monitor;
     forever begin
       m_seq_item = fpu_seq_item::type_id::create("m_seq_item");
 
-      @(posedge vif.clk iff vif.rstn) #1step;
+      @(posedge vif.clk iff vif.rstn);
       m_seq_item.rstn = vif.rstn;
       m_seq_item.OP1 = vif.OP1;
       m_seq_item.OP2 = vif.OP2;

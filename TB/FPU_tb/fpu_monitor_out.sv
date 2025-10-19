@@ -28,9 +28,9 @@ class fpu_monitor_out extends uvm_monitor;
     forever begin
       m_seq_item = fpu_seq_item::type_id::create("m_seq_item");
 
-      @(negedge vif.clk iff vif.rstn)
+      @(posedge vif.clk iff vif.rstn)
       if(vif.OP_select == 3'b010)
-        @(negedge vif.clk);
+        @(posedge vif.clk);
 
       m_seq_item.INF_flag = vif.INF_flag;
       m_seq_item.NAN_flag = vif.NAN_flag;

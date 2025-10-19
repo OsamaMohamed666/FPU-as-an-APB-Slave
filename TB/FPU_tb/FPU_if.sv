@@ -14,6 +14,24 @@ logic  NAN_flag;
 
 logic [31:0] Result;
 
-//Clocking Blocks for driver and monitors
+//Clocking Block
+clocking cb @(posedge clk);
+  default input #1step output #((fpu_package::CLK_PERIOD)/2);
+
+  //Outputs
+  output OP1;
+  output OP2;
+  output OP_select;
+
+  //Inputs
+  input data_valid;
+  input zero_flag;
+  input INF_flag;
+  input NAN_flag;
+  input Result;
+endclocking
+
+// Modport for driver
+modport driver_mp (clocking cb, input clk, output rstn);
 
 endinterface

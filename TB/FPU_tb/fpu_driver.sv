@@ -3,7 +3,7 @@ class fpu_driver extends uvm_driver #(fpu_seq_item);
 
 
   //INTERFACE
-  virtual fpu_if vif;
+  virtual fpu_if.driver_mp vif;
 
   //CONSTRUCTOR
   function new (string name = "fpu_driver", uvm_component parent);
@@ -30,24 +30,23 @@ class fpu_driver extends uvm_driver #(fpu_seq_item);
 
   //TASK: DRIVING
   task drive();
-    @(posedge vif.clk iff vif.rstn);
-   // vif.rstn <= req.rstn;
-    vif.OP1 <= req.OP1;
-    vif.OP2 <= req.OP2;
-    vif.OP_select <= req.OP_select;
+    @(posedge vif.cb iff vif.rstn);
+   // vif.cb.rstn <= req.rstn;
+    vif.cb.OP1 <= req.OP1;
+    vif.cb.OP2 <= req.OP2;
+    vif.cb.OP_select <= req.OP_select;
     if(req.OP_select == 3'b010) //Multiplication
       // wait one more cycle as multiplication takes 2 cycles
-      @(posedge vif.clk);
-
+      @(posedge vif.cb);
   endtask
 
   //TASK: RESETTING
   task reset();
     vif.rstn <= 1'b0;
-    vif.OP1  <= '0;
-    vif.OP2  <= '0;
-    vif.OP_select <= '0;
-    repeat(2) @(posedge vif.clk);
+    vif.cb.OP1  <= '0;
+    vif.cb.OP2  <= '0;
+    vif.cb.OP_select <= '0;
+    repeat(2) @(posedge vif.cb);
     vif.rstn <= 1'b1;
   endtask
 
