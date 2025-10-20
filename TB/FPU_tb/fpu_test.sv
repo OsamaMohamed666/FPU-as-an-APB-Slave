@@ -18,12 +18,43 @@ class fpu_test extends uvm_test;
     m_fpu_env = fpu_env::type_id::create("m_fpu_env", this);
   endfunction
 
-  // run phase
+  // Run phase
   task run_phase(uvm_phase phase);
     phase.raise_objection(this);
     m_fpu_seq.start(m_fpu_env.m_fpu_agent.m_sequencer);
     phase.drop_objection(this);
     phase.phase_done.set_drain_time(this,20);
   endtask
+
+  // End of elaboration phase
+  function void end_of_elaboration_phase(uvm_phase phase);
+    super.end_of_elaboration_phase(phase);
+    uvm_top.print_topology();
+  endfunction
+
+  //REPORT PHASE
+  virtual function void report_phase(uvm_phase phase);
+    uvm_report_server svr;
+    super.report_phase(phase);
+    svr = uvm_report_server::get_server();
+
+    if(svr.get_severity_count(UVM_FATAL)+svr.get_severity_count(UVM_ERROR)>0) begin
+      `uvm_info("Report_Phase", "---------------------------------------", UVM_NONE)
+      `uvm_info("Report_Phase", "----TEST FAIL----", UVM_NONE)
+      `uvm_info("Report_Phase", "---------------------------------------", UVM_NONE)
+    end
+
+    else begin
+      `uvm_info("Report_Phase", "---------------------------------------", UVM_NONE)
+      `uvm_info("Report_Phase", "---- TEST PASS ----", UVM_NONE)
+      `uvm_info("Report_Phase", "---------------------------------------", UVM_NONE)
+    end
+
+    //COVERAGE REPORTS
+    `uvm_info("REPORT PHASE",$sformatf(" coverage of FPU inputs is %0.2f%%", m_fpu_env.m_fpu_cov.cg_inputs.get_coverage()),UVM_LOW);
+    `uvm_info("REPORT PHASE",$sformatf(" coverage of FPU operations is %0.2f%%", m_fpu_env.m_fpu_cov.cg_operation_select.get_coverage()),UVM_LOW);
+    `uvm_info("REPORT PHASE",$sformatf(" coverage of FPU outputs is %0.2f%%",m_fpu_env.m_fpu_cov.cg_outputs.get_coverage()),UVM_LOW);
+    `uvm_info("REPORT PHASE",$sformatf(" coverage of FPU flags is %0.2f%%", m_fpu_env.m_fpu_cov.cg_flags.get_coverage()),UVM_LOW);
+  endfunction
 
 endclass

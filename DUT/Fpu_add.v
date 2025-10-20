@@ -163,6 +163,8 @@ always@(*) begin
   if(Exponent1 == Exponent2) begin
     if(one_bigger)
       result_sign = sign1;
+    else if ((Fraction1 == Fraction2) && ( add_select && (sign1 != sign2) || (sub_select && (sign1 == sign2)) ) )
+      result_sign =0;
     else if (sub_select)
       result_sign = ~sign2;
     else

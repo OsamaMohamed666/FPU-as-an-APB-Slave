@@ -18,7 +18,12 @@ always @ (*)begin
   shift_value = 0;
   if(normalize_enable==1'b1)begin
     count=0;
-    if(Alu_result[25]==1'b1)begin
+    if (!(|Alu_result)) begin
+      Exponent_normalized= 0;
+      Fraction_normalized=0;
+    end
+
+    else if(Alu_result[25]==1'b1)begin
       Exponent_normalized= higher_Exponent+1;
       Fraction_normalized= Alu_result[24:1];
     end
@@ -68,8 +73,11 @@ always @ (*)begin
 
   end
   else begin
-    Exponent_normalized= higher_Exponent;
     Fraction_normalized=Alu_result;
+    if(&Fraction_normalized) //special case if Rounding to inf number so inf flag raised
+      Exponent_normalized = higher_Exponent+1;
+    else
+      Exponent_normalized= higher_Exponent;
   end
 end
 

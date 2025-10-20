@@ -10,6 +10,58 @@ R0
 R0
 R0
 R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
 !s11f vlog 2021.1 2021.01, Jan 19 2021
 13
 !s112 1.1
@@ -19,22 +71,52 @@ R0
 cModel Technology
 Z1 dO:/COURSES/Verfication/UVM Examples/FPU_APB/FPU-as-an-APB-Slave/TB/FPU_tb
 T_opt
-!s11d O:/COURSES/Verfication/UVM Examples/FPU_APB/FPU-as-an-APB-Slave/TB/FPU_tb/work 0 
-!s11d fpu_if 1 0 
-!s11d Examples/FPU_APB/FPU-as-an-APB-Slave/TB/FPU_tb/work 1 0 
-!s11d fpu_package O:/COURSES/Verfication/UVM 0 
+Z2 !s11d O:/COURSES/Verfication/UVM Examples/FPU_APB/FPU-as-an-APB-Slave/TB/FPU_tb/work 0 
+Z3 !s11d fpu_if 1 0 
+Z4 !s11d Examples/FPU_APB/FPU-as-an-APB-Slave/TB/FPU_tb/work 1 0 
+Z5 !s11d fpu_package O:/COURSES/Verfication/UVM 0 
 !s110 1760833101
 VfRzc<DUjk8f<`]6@bHSA73
-04 7 4 work fpu_top fast 0
+Z6 04 7 4 work fpu_top fast 0
 =1-98fa9bf397bd-68f42e4b-305-4980
-!s124 OEM100
-o-quiet -auto_acc_if_foreign -work work +acc
-Z2 tCvgOpt 0
+Z7 !s124 OEM100
+Z8 o-quiet -auto_acc_if_foreign -work work +acc
+Z9 tCvgOpt 0
 n@_opt
-OL;O;2021.1;73
+Z10 OL;O;2021.1;73
+R1
+T_opt1
+R2
+R3
+R4
+R5
+!s110 1761001108
+Vgon>I0PFi?LfbhfX?C8Gi2
+R6
+=1-98fa9bf397bd-68f6be93-fe-4ea0
+R7
+R8
+R9
+n@_opt1
+R10
+T_opt2
+R2
+R3
+R4
+R5
+!s110 1760995791
+Vb^YGXm:i3iAXCXYd:lSiR1
+R6
+=1-98fa9bf397bd-68f6a9cd-321-5e8c
+R7
+o-quiet -auto_acc_if_foreign -work work
+R9
+n@_opt2
+R10
+R1
 vFPU
-Z3 DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
-Z4 !s110 1760833095
+Z11 DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
+Z12 !s110 1761001105
 !i10b 1
 !s100 2]kaK;`eIQ8=EmZb=MVAe2
 IAWMg?[<DSg=Wk^fFg:3KN2
@@ -43,52 +125,52 @@ R1
 w1760570511
 8../../DUT/FPU.v
 F../../DUT/FPU.v
-!i122 10
+!i122 74
 L0 4 110
-Z5 VDg1SIo80bB@j0V0VzS_@n1
-Z6 OL;L;2021.1;73
+Z13 VDg1SIo80bB@j0V0VzS_@n1
+Z14 OL;L;2021.1;73
 r1
 !s85 0
 31
-Z7 !s108 1760833095.000000
-Z8 !s107 fpu_test.sv|fpu_env.sv|fpu_scoreboard.sv|fpu_agent.sv|fpu_monitor_out.sv|fpu_monitor_in.sv|fpu_driver.sv|fpu_sequencer.sv|fpu_sequence.sv|fpu_seq_item.sv|O:/Programming/Quartus/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_deprecated_defines.svh|O:/Programming/Quartus/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_reg_defines.svh|O:/Programming/Quartus/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_callback_defines.svh|O:/Programming/Quartus/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_sequence_defines.svh|O:/Programming/Quartus/uvm-1.1d/../verilog_src/uvm-1.1d/src/tlm1/uvm_tlm_imps.svh|O:/Programming/Quartus/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_tlm_defines.svh|O:/Programming/Quartus/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_printer_defines.svh|O:/Programming/Quartus/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_object_defines.svh|O:/Programming/Quartus/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_phase_defines.svh|O:/Programming/Quartus/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_message_defines.svh|O:/Programming/Quartus/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_version_defines.svh|O:/Programming/Quartus/uvm-1.1d/../verilog_src/uvm-1.1d/src/uvm_macros.svh|../../DUT/Floating_point_multiplication.v|../../DUT/Fpu_add.v|../../DUT/Normalize_add.v|fpu_top.sv|fpu_if.sv|fpu_package.sv|../../DUT/FPU.v|
-Z9 !s90 -sv|-f|files.f|+cover|
+Z15 !s108 1761001104.000000
+Z16 !s107 fpu_test.sv|fpu_env.sv|fpu_coverage.sv|fpu_scoreboard.sv|fpu_agent.sv|fpu_monitor_out.sv|fpu_monitor_in.sv|fpu_driver.sv|fpu_sequencer.sv|fpu_sequence.sv|fpu_seq_item.sv|O:/Programming/Quartus/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_deprecated_defines.svh|O:/Programming/Quartus/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_reg_defines.svh|O:/Programming/Quartus/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_callback_defines.svh|O:/Programming/Quartus/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_sequence_defines.svh|O:/Programming/Quartus/uvm-1.1d/../verilog_src/uvm-1.1d/src/tlm1/uvm_tlm_imps.svh|O:/Programming/Quartus/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_tlm_defines.svh|O:/Programming/Quartus/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_printer_defines.svh|O:/Programming/Quartus/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_object_defines.svh|O:/Programming/Quartus/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_phase_defines.svh|O:/Programming/Quartus/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_message_defines.svh|O:/Programming/Quartus/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_version_defines.svh|O:/Programming/Quartus/uvm-1.1d/../verilog_src/uvm-1.1d/src/uvm_macros.svh|../../DUT/Floating_point_multiplication.v|../../DUT/Fpu_add.v|../../DUT/Normalize_add.v|fpu_top.sv|fpu_if.sv|fpu_package.sv|../../DUT/FPU.v|
+Z17 !s90 -sv|-f|files.f|+cover|
 !i113 0
-Z10 !s102 +cover
-Z11 o-sv +cover -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
-R2
+Z18 !s102 +cover
+Z19 o-sv +cover -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R9
 n@f@p@u
 vFpu_add
-R3
-R4
+R11
+R12
 !i10b 1
-!s100 gXDA^B4ONHMbePI`f5DC02
-IKAaKe6[GVSRdk[SVA>QKO3
+!s100 A2Zbe>BoVmgd2PUza89k;1
+IbbQ:`Un6`4LJ6D`>X@PAa0
 S1
 R1
-w1760557988
+w1761001102
 8../../DUT/Fpu_add.v
 F../../DUT/Fpu_add.v
-!i122 10
-L0 1 211
-R5
-R6
+!i122 74
+L0 1 213
+R13
+R14
 r1
 !s85 0
 31
-R7
-R8
-R9
+R15
+R16
+R17
 !i113 0
-R10
-R11
-R2
+R18
+R19
+R9
 n@fpu_add
 Yfpu_if
-R3
-Z12 DXx6 mtiUvm 7 uvm_pkg 0 22 8V[`8]Q0W57le7Z>zYaAj1
-Z13 DXx4 work 11 fpu_package 0 22 FXo@iNm3eSRMLKM>J_Z4Q3
-Z14 !s110 1760833096
+R11
+Z20 DXx6 mtiUvm 7 uvm_pkg 0 22 8V[`8]Q0W57le7Z>zYaAj1
+Z21 DXx4 work 11 fpu_package 0 22 aoOd[kfb9?09kjiGKzW3I3
+R12
 !i10b 1
 !s100 GMmm?U<1d>?>:lVF6gkIK0
 I9mX^F0M?IW>=6<Ke7L<4`2
@@ -97,23 +179,23 @@ R1
 w1760833019
 8fpu_if.sv
 Ffpu_if.sv
-!i122 10
-Z15 L0 1 0
-R5
-R6
+!i122 74
+Z22 L0 1 0
+R13
+R14
 r1
 !s85 0
 31
-R7
-R8
-R9
+R15
+R16
+R17
 !i113 0
-R10
-R11
-R2
+R18
+R19
+R9
 vFPU_MULT
-R3
-R4
+R11
+R12
 !i10b 1
 !s100 gM=K9c8@^PQG:2FJZ=4mc1
 IH8O2e?nRGhbo^PJD]PSjE1
@@ -122,32 +204,32 @@ R1
 w1760564789
 8../../DUT/Floating_point_multiplication.v
 F../../DUT/Floating_point_multiplication.v
-!i122 10
+!i122 74
 L0 1 221
-R5
-R6
+R13
+R14
 r1
 !s85 0
 31
-R7
-R8
-R9
+R15
+R16
+R17
 !i113 0
-R10
-R11
-R2
+R18
+R19
+R9
 n@f@p@u_@m@u@l@t
 Xfpu_package
 !s115 fpu_if
-R3
+R11
+R20
 R12
-R14
 !i10b 1
-!s100 :3za5nG88QzFP1bKV0PW=1
-IFXo@iNm3eSRMLKM>J_Z4Q3
+!s100 <1iOgd<G9VU04laMJ[gXK0
+IaoOd[kfb9?09kjiGKzW3I3
 S1
 R1
-w1760833092
+w1761000794
 8fpu_package.sv
 Ffpu_package.sv
 FO:/Programming/Quartus/uvm-1.1d/../verilog_src/uvm-1.1d/src/uvm_macros.svh
@@ -170,72 +252,73 @@ Ffpu_monitor_in.sv
 Ffpu_monitor_out.sv
 Ffpu_agent.sv
 Ffpu_scoreboard.sv
+Ffpu_coverage.sv
 Ffpu_env.sv
 Ffpu_test.sv
-!i122 10
-R15
-VFXo@iNm3eSRMLKM>J_Z4Q3
-R6
+!i122 74
+R22
+VaoOd[kfb9?09kjiGKzW3I3
+R14
 r1
 !s85 0
 31
-R7
-R8
-R9
+R15
+R16
+R17
 !i113 0
-R10
-R11
-R2
+R18
+R19
+R9
 vfpu_top
-R3
+R11
+R20
+R21
 R12
-R13
-R14
 !i10b 1
 !s100 77W<aOH[?`Rz2DXfY<Ao_3
 ICRG[fcSgan8[`W9;B?@>K2
 S1
 R1
-w1760626917
+w1760833152
 8fpu_top.sv
 Ffpu_top.sv
-!i122 10
+!i122 74
 L0 2 42
-R5
-R6
+R13
+R14
 r1
 !s85 0
 31
-R7
-R8
-R9
+R15
+R16
+R17
 !i113 0
-R10
-R11
-R2
+R18
+R19
+R9
 vNormalize_add
-R3
-R4
+R11
+R12
 !i10b 1
-!s100 6ITA4QXDE;_WWVm1l@zN=1
-IS=jMNC7N4WI90=Z5==n?:3
+!s100 =ej:OY2;IJCECzn7Z6bJ`2
+I^jcT5Z6z5[^jPzef3Vfzb1
 S1
 R1
-w1760559601
+w1761000509
 8../../DUT/Normalize_add.v
 F../../DUT/Normalize_add.v
-!i122 10
-L0 1 77
-R5
-R6
+!i122 74
+L0 1 85
+R13
+R14
 r1
 !s85 0
 31
-R7
-R8
-R9
+R15
+R16
+R17
 !i113 0
-R10
-R11
-R2
+R18
+R19
+R9
 n@normalize_add

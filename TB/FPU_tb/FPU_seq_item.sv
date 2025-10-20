@@ -26,9 +26,11 @@ class fpu_seq_item extends uvm_sequence_item;
   // Constraints
   //==================================================================================
   constraint operands_c {
-    OP1 dist { 32'hffff_ffff := 1, 32'h0 := 1, [32'h1 : 32'hffff_fffe] := 98};
-    OP2 dist { 32'hffff_ffff := 1, 32'h0 := 1, [32'h1 : 32'hffff_fffe] := 98};
+    solve OP1 before OP2;
+    OP1 dist { 32'hffff_ffff :/ 1, 32'h0 :/ 1, 32'h7f7f_ffff :/ 1, 32'hff7f_ffff :/ 1, [32'h1 : 32'hffff_fffe] :/ 96};
+    OP2 dist { 32'hffff_ffff :/ 1, 32'h0 :/ 1, 32'h7f7f_ffff :/ 1, 32'hff7f_ffff :/ 1, OP1 :/ 3, [32'h1 : 32'hffff_fffe] :/ 93};
   }
+
 
   // decreasing the probability of choosing default selection
   constraint selection_c {
@@ -41,4 +43,6 @@ class fpu_seq_item extends uvm_sequence_item;
   constraint reset_c {
     soft rstn == 1'b1;
   }
+
+
 endclass

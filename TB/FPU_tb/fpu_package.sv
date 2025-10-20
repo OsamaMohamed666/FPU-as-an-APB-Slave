@@ -1,5 +1,5 @@
 package fpu_package;
-  parameter int SEQUENCES = 10000;
+  parameter int SEQUENCES = 100000;
   parameter int CLK_PERIOD = 10;
 
   bit detect_new_fpu_operation;
@@ -17,7 +17,7 @@ package fpu_package;
   `include "fpu_monitor_out.sv"
   `include "fpu_agent.sv"
   `include "fpu_scoreboard.sv"
-  //`include "fpu_cov.sv"
+  `include "fpu_coverage.sv"
   `include "fpu_env.sv"
   `include "fpu_test.sv"
 
