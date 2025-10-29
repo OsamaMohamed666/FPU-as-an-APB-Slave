@@ -6,7 +6,7 @@ module fpu_top;
   bit clk;
   //bit rstn;
 
-  always #5 clk = ~clk;
+  always #((fpu_package::CLK_PERIOD)/2) clk = ~clk;
   initial begin
     clk = 0;
     //rstn = 0;

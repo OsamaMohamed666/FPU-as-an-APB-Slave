@@ -36,6 +36,7 @@ class fpu_monitor_out extends uvm_monitor;
       m_seq_item.NAN_flag = vif.NAN_flag;
       m_seq_item.zero_flag = vif.zero_flag;
       m_seq_item.Result = vif.Result;
+      m_seq_item.data_valid = vif.data_valid;
 
       if(fpu_package::detect_new_fpu_operation) begin
         item_collect_port_out.write(m_seq_item);

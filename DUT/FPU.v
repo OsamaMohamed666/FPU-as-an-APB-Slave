@@ -55,7 +55,8 @@ Fpu_add Add1(
 
 
 //***********************Instantiation of Multiplying two floating point numbers Module***********************
-FPU_MULT MULT1(.clk(clk),
+FPU_MULT MULT1(
+.clk(clk),
 .rstn(rstn),
 .OP1(OP1),
 .OP2(OP2),

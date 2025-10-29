@@ -21,6 +21,7 @@ class fpu_coverage extends uvm_component;
       bins  zero     = {32'h0};
       bins  minimum_value = {32'hFF7F_FFFF};
       bins  maximum_value = {32'hFF7F_FFFF};
+      bins  others  = default;
     }
 
     //OPERAND TWO
@@ -29,6 +30,7 @@ class fpu_coverage extends uvm_component;
       bins  zero     = {32'h0};
       bins  minimum_value = {32'hFF7F_FFFF};
       bins  maximum_value = {32'h7F7FFFFF};
+      bins  others  = default;
     }
 
   endgroup
@@ -49,25 +51,26 @@ class fpu_coverage extends uvm_component;
       bins  zero     = {32'h0};
       bins  minimum_value = {32'hFF7F_FFFF};
       bins  maximum_value = {32'h7F7FFFFF};
+      bins  others  = default;
     }
 
     //DATA VALID
-    //cp_data_validflag: coverpoint m_seq_item_out.data_valid;
+    cp_data_validflag: coverpoint m_seq_item_out.data_valid;
   endgroup
 
   //FLAGS GROUP
   covergroup cg_flags;
     cp_zero_flag: coverpoint m_seq_item_out.zero_flag
       {
-        bins zero_f[] = {0,1};
+        bins zero_f[2] = {0,1};
       }
     cp_infinite_flag: coverpoint m_seq_item_out.INF_flag
       {
-        bins inf_f[] = {0,1};
+        bins inf_f[2] = {0,1};
       }
     cp_not_a_number_flag: coverpoint m_seq_item_out.NAN_flag
       {
-        bins nan_f[] = {0,1};
+        bins nan_f[2] = {0,1};
       }
   endgroup
 

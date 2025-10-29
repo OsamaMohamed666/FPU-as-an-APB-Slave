@@ -30,14 +30,14 @@ class fpu_driver extends uvm_driver #(fpu_seq_item);
 
   //TASK: DRIVING
   task drive();
-    @(posedge vif.cb iff vif.rstn);
+    @(vif.cb iff vif.rstn);
    // vif.cb.rstn <= req.rstn;
     vif.cb.OP1 <= req.OP1;
     vif.cb.OP2 <= req.OP2;
     vif.cb.OP_select <= req.OP_select;
     if(req.OP_select == 3'b010) //Multiplication
       // wait one more cycle as multiplication takes 2 cycles
-      @(posedge vif.cb);
+      @(vif.cb);
   endtask
 
   //TASK: RESETTING
@@ -46,7 +46,7 @@ class fpu_driver extends uvm_driver #(fpu_seq_item);
     vif.cb.OP1  <= '0;
     vif.cb.OP2  <= '0;
     vif.cb.OP_select <= '0;
-    repeat(2) @(posedge vif.cb);
+    repeat(2) @(vif.cb);
     vif.rstn <= 1'b1;
   endtask
 

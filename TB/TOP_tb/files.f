@@ -1,0 +1,7 @@
+../../DUT/FPU.v
+../../DUT/APB_Slave.v
+../../DUT/Register_bank.v
+../../DUT/FPU_apb.v
+fpu_apb_package.sv
+fpu_apb_if.sv
+fpu_apb_top.sv

@@ -2,7 +2,7 @@
 class fpu_test extends uvm_test;
   `uvm_component_utils(fpu_test)
 
-  // Environment handle
+  // Environment and sequence handles
   fpu_env m_fpu_env;
   fpu_sequence m_fpu_seq;
 
