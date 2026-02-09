@@ -36,6 +36,8 @@ class fpu_seq_item extends uvm_sequence_item;
   constraint selection_c {
     OP_select dist { 3'b0 := 33, 3'b001 := 33, 3'b010 := 33, [3'b011 : 3'b111]:= 1};
   }
+
+
   constraint multiply_c {
     (OP_select==3'b010) -> (OP1[30:23] !=0  && OP2[30:23] !=0);
   }

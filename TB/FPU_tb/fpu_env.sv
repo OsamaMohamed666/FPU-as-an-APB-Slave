@@ -22,11 +22,11 @@ class fpu_env extends uvm_env;
 
   //FUNCTION: CONNECT PHASE
   function void connect_phase(uvm_phase phase);
-    // CONNECT MONITORS AP TO SCOREBOARD AP
+    //Connect monitors ap to scoreboard ap
     m_fpu_agent.m_monitor_in.item_collect_port_in.connect(m_fpu_sb.item_collect_export_in);
     m_fpu_agent.m_monitor_out.item_collect_port_out.connect(m_fpu_sb.item_collect_export_out);
 
-    // CONNECT MONITORS AP TO COVERAGE AP
+    //Connect monitors ap to coverage ap
     m_fpu_agent.m_monitor_in.item_collect_port_in.connect(m_fpu_cov.item_collect_export_in);
     m_fpu_agent.m_monitor_out.item_collect_port_out.connect(m_fpu_cov.item_collect_export_out);
   endfunction

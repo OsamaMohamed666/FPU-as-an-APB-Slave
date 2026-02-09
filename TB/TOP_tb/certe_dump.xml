@@ -1,0 +1,77 @@
+<certe_dump>
+  <instance type=" fpu_apb_test "> 
+     uvm_test_top 
+  
+     <instance type=" fpu_apb_env "> 
+        m_fpu_apb_env 
+  
+        <instance type=" fpu_apb_agent "> 
+           m_agent 
+  
+           <instance type=" fpu_apb_driver "> 
+              m_driver 
+  
+              <port if_type = "uvm_analysis_port" txn_type = "anonymous"> 
+                 rsp_port 
+              </port> 
+  
+              <port if_type = "uvm_seq_item_pull_port" txn_type = "anonymous"> 
+                 seq_item_port 
+                 <connection>  uvm_test_top.m_fpu_apb_env.m_agent.m_sequencer.seq_item_export  </connection> 
+              </port> 
+           </instance> 
+  
+  
+           <instance type=" fpu_apb_monitor_in "> 
+              m_monitor_in 
+  
+              <port if_type = "uvm_analysis_port" txn_type = "anonymous"> 
+                 item_collect_port_in 
+                 <connection>  uvm_test_top.m_fpu_apb_env.m_fpu_sb.item_collect_export_in  </connection> 
+              </port> 
+           </instance> 
+  
+  
+           <instance type=" fpu_apb_monitor_out "> 
+              m_monitor_out 
+  
+              <port if_type = "uvm_analysis_port" txn_type = "anonymous"> 
+                 item_collect_port_out 
+                 <connection>  uvm_test_top.m_fpu_apb_env.m_fpu_sb.item_collect_export_out  </connection> 
+              </port> 
+           </instance> 
+  
+  
+           <instance type=" fpu_apb_sequencer "> 
+              m_sequencer 
+  
+              <export if_type = "uvm_analysis_export" txn_type = "anonymous"> 
+                 rsp_export 
+                 <connection>  uvm_test_top.m_fpu_apb_env.m_agent.m_sequencer.sqr_rsp_analysis_fifo.analysis_export  </connection> 
+              </export> 
+  
+              <imp if_type = "uvm_seq_item_pull_imp" txn_type = "anonymous"> 
+                 seq_item_export 
+              </imp> 
+           </instance> 
+  
+        </instance> 
+  
+  
+        <instance type=" fpu_scoreboard "> 
+           m_fpu_sb 
+  
+           <imp if_type = "uvm_analysis_imp_MON_IN" txn_type = "anonymous"> 
+              item_collect_export_in 
+           </imp> 
+  
+           <imp if_type = "uvm_analysis_imp_MON_OUT" txn_type = "anonymous"> 
+              item_collect_export_out 
+           </imp> 
+        </instance> 
+  
+     </instance> 
+  
+  </instance> 
+  
+  </certe_dump>

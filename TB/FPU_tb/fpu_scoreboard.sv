@@ -55,6 +55,9 @@ class fpu_scoreboard extends uvm_scoreboard;
   //Error counter and correct counter
   int err_cnt, crr_cnt;
 
+  //Operations counter
+  int add_cnt, sub_cnt, mul_cnt, def_cnt;
+
   //==================================================================================
   // TASK: RUN PHASE
   //==================================================================================
@@ -71,10 +74,22 @@ class fpu_scoreboard extends uvm_scoreboard;
 
       //Case to get right operation
       case(sb_item_in.OP_select)
-      3'b000 : exp_result_fp = op1_fp+op2_fp;
-      3'b001 : exp_result_fp = op1_fp-op2_fp;
-      3'b010 : exp_result_fp = op1_fp * op2_fp;
-      default : exp_result_fp = 32'b0;
+      3'b000 : begin
+        exp_result_fp = op1_fp + op2_fp;
+        add_cnt++;
+      end
+      3'b001 : begin
+        exp_result_fp = op1_fp-op2_fp;
+        sub_cnt++;
+      end
+      3'b010 : begin
+        exp_result_fp = op1_fp * op2_fp;
+        mul_cnt++;
+      end
+      default : begin
+        exp_result_fp = 32'b0;
+        def_cnt++;
+      end
       endcase
 
       //Return result into bits representation again
@@ -153,5 +168,9 @@ class fpu_scoreboard extends uvm_scoreboard;
     super.report_phase(phase);
     `uvm_info("REPORT PHASE: FPU OPERATION",$sformatf("Successful checks:%0d",crr_cnt), UVM_NONE);
     `uvm_info("REPORT PHASE: FPU OPERATION",$sformatf("Unsuccessful checks:%0d",err_cnt),UVM_NONE);
+    `uvm_info("REPORT PHASE: FPU OPERATION",$sformatf("Addition operations:%0d",add_cnt),UVM_NONE);
+    `uvm_info("REPORT PHASE: FPU OPERATION",$sformatf("Subtraction operations:%0d",sub_cnt),UVM_NONE);
+    `uvm_info("REPORT PHASE: FPU OPERATION",$sformatf("Multiplication operations:%0d",mul_cnt),UVM_NONE);
+    `uvm_info("REPORT PHASE: FPU OPERATION",$sformatf("Default operations:%0d",def_cnt),UVM_NONE);
   endfunction
 endclass

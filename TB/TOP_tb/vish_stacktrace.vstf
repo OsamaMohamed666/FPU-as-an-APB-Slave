@@ -1,0 +1,43 @@
+# Current time Sun Dec  7 03:02:04 2025
+# Program = vish
+# Id = "2021.1"
+# Version = "2021.01"
+# Date = "Jan 19 2021"
+# Platform = win64
+
+Exception c0000005 has occurred at address 5b382972. Traceback:
+# 0    0x5b382972: 'Tk_ConfigureWidget + 0xa52'
+# 1    0x5b3829d8: 'Tk_ConfigureWidget + 0xab8'
+# 2    0x5b38431a: 'Tk_GetOption + 0x7a'
+# 3    0x403535ff: 'Mtirpc_Init + 0x1cbc0f'
+# 4    0x401c9dfb: 'Mtirpc_Init + 0x4240b'
+# 5    0x40221b8d: 'Mtirpc_Init + 0x9a19d'
+# 6    0x40225d2a: 'Mtirpc_Init + 0x9e33a'
+# 7    0x40226c78: 'Mtirpc_Init + 0x9f288'
+# 8    0x40228fc1: 'Mtirpc_Init + 0xa15d1'
+# 9    0x401d2ada: 'Mtirpc_Init + 0x4b0ea'
+# 10   0x401cf686: 'Mtirpc_Init + 0x47c96'
+# 11   0x5b4a7103: 'TclNRRunCallbacks + 0x63'
+# 12   0x5b4a7103: 'TclNRRunCallbacks + 0x63'
+# 13   0xcb950d9a: 'Itcl_EvalMemberCode + 0x3ba'
+# 14   0xcb951f5b: 'Itcl_ExecMethod + 0x23b'
+# 15   0xcb959a19: 'Itcl_EvalArgs + 0x1c9'
+# 16   0xcb954cf1: 'Itcl_HandleInstance + 0x2c1'
+# 17   0x5b4a7103: 'TclNRRunCallbacks + 0x63'
+# 18   0x5b373f1e: 'TkSetWindowMenuBar + 0x96e'
+# 19   0x5b2c3636: 'TkWinHandleMenuEvent + 0x486'
+# 20   0x5b2ca058: 'TkpMakeMenuWindow + 0x6c8'
+# 21   0xf3c7ef5c: 'CallWindowProcW + 0x60c'
+# 22   0xf3c7e684: 'DispatchMessageW + 0x4a4'
+# 23   0x5b5c369e: 'Tcl_WaitForEvent + 0x1ae'
+# 24   0x5b55a9b3: 'Tcl_DoOneEvent + 0x153'
+# 25   0x5b32aee5: 'Tk_MainLoop + 0x25'
+# 26   0x5b36d282: 'Tk_MainEx + 0x932'
+# 27   0x401ab032: 'Mtirpc_Init + 0x23642'
+# 28   0x401adc14: 'Mtirpc_Init + 0x26224'
+# 29   0x40771eb0: 'Tclsqlite3_Init + 0x1c000'
+# 30   0xf2db7374: 'BaseThreadInitThunk + 0x14'
+# 31   0xf435cc91: 'RtlUserThreadStart + 0x21'
+StackWalk failed 0
+# End of Stack Trace
+

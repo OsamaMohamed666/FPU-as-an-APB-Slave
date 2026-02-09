@@ -9,13 +9,14 @@ module Normalize_add
   output reg [23:0] Fraction_normalized
   );
 
-reg [5:0] count;
+reg [4:0] count;
 reg [4:0] shift_value;
 reg [25:0] alu_shifted_result;
 
 always @ (*)begin
   alu_shifted_result = 0;
   shift_value = 0;
+  count = 0;
   if(normalize_enable==1'b1)begin
     count=0;
     if (!(|Alu_result)) begin
@@ -54,7 +55,7 @@ always @ (*)begin
         26'b000000000000000000000001xx:count=2;
         26'b0000000000000000000000001x:count=1;
         26'b00000000000000000000000001:count=0;
-        default:count=0;
+        default:count= 5'b11000;
       endcase
 
       shift_value=24-count;
