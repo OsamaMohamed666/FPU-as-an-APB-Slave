@@ -50,6 +50,9 @@ class fpu_apb_test extends uvm_test;
       `uvm_info("Report_Phase", "---- TEST PASS ----", UVM_NONE)
       `uvm_info("Report_Phase", "---------------------------------------", UVM_NONE)
     end
+
+      //COVERAGE REPORTS
+    `uvm_info("REPORT PHASE",$sformatf(" COVERAGE of FPU_APB inputs is %0.2f%%", m_fpu_apb_env.m_fpu_cov.cg_inputs.get_coverage()),UVM_LOW);
   endfunction
 
 endclass

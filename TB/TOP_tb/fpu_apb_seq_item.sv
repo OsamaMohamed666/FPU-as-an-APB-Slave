@@ -10,9 +10,9 @@ class fpu_apb_seq_item extends uvm_sequence_item;
   //DATA MEMBERS
   rand  bit             RSTN;
   rand  bit             PSEL;
-        bit             PWRITE;
-        bit             PENABLE;
-        bit      [31:0] PADDR;
+  rand  bit             PWRITE;
+  rand  bit             PENABLE;
+  rand  bit      [31:0] PADDR;
   rand  bit      [31:0] PWDATA;
 
   logic          [31:0] PRDATA;

@@ -3,7 +3,7 @@ package fpu_apb_package;
   `include "uvm_macros.svh"
 
   //PACKAGE PARAMETERS
-  parameter int SEQUENCES = 5*10000; //number of sequences to run in the test
+  parameter int SEQUENCES = 5*100000; //number of sequences to run in the test
   parameter int CLK_PERIOD = 10;
 
 
@@ -27,7 +27,7 @@ package fpu_apb_package;
   `include "fpu_apb_monitor_out.sv"
   `include "fpu_apb_agent.sv"
   `include "../FPU_tb/fpu_scoreboard.sv"
-  //`include "fpu_apb_coverage.sv"
+  `include "fpu_apb_coverage.sv"
   `include "fpu_apb_env.sv"
   `include "fpu_apb_test.sv"
 
