@@ -9,6 +9,7 @@ package fpu_package;
   //==================================================================================
   // Classes
   //==================================================================================
+  `include "fpu_config.sv"
   `include "fpu_seq_item.sv"
   `include "fpu_sequence.sv"
   `include "fpu_sequencer.sv"

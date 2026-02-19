@@ -19,7 +19,7 @@ logic [31:0] Result;
 
 //Clocking Block
 clocking cb @(posedge clk);
-  default input #1step output #((fpu_package::CLK_PERIOD)/2);
+  default input #1step output #((fpu_apb_package::CLK_PERIOD)/2);
 
   //Outputs
   output OP1;

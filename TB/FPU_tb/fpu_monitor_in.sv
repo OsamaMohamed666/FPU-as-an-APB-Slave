@@ -20,7 +20,7 @@ class fpu_monitor_in extends uvm_monitor;
   //BUILD PHASE
   function void build_phase (uvm_phase phase);
     super.build_phase(phase);
-    if(!uvm_config_db #(virtual fpu_if)::get(this,"","vif",vif))
+    if(!uvm_config_db #(virtual fpu_if)::get(this,"","fpu_vif",vif))
       `uvm_fatal (get_name(),"ERROR IN BUILDING FPU MONITOR INPUT")
 
     // Create a seq_item to compare it to the new seq item to detect if there is a new fpu operation
@@ -42,9 +42,9 @@ class fpu_monitor_in extends uvm_monitor;
         @(posedge vif.clk);
 
       if(compare_inputs(m_seq_item,m_seq_item_prev))
-        fpu_package::detect_new_fpu_operation = 0;
+        fpu_apb_package::detect_new_fpu_operation = 0;
       else begin
-        fpu_package::detect_new_fpu_operation = 1;
+        fpu_apb_package::detect_new_fpu_operation = 1;
         item_collect_port_in.write(m_seq_item);
       end
 

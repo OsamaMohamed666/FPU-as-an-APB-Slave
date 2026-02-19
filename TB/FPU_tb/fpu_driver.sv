@@ -13,7 +13,7 @@ class fpu_driver extends uvm_driver #(fpu_seq_item);
   //BUILD PHASE
   function void build_phase (uvm_phase phase);
     super.build_phase(phase);
-    if(!uvm_config_db #(virtual fpu_if)::get(this,"","vif",vif)) begin
+    if(!uvm_config_db #(virtual fpu_if)::get(this,"","fpu_vif",vif)) begin
       `uvm_fatal(get_name(), "Failed to get configuration for fpu_if");
     end
   endfunction

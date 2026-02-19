@@ -6,7 +6,8 @@ package fpu_apb_package;
   parameter int SEQUENCES = 5*100000; //number of sequences to run in the test
   parameter int CLK_PERIOD = 10;
 
-
+  //DETECTING NEW FPU OPERATION
+  bit detect_new_fpu_operation;
   //ENUM FOR ADDRESSES
   typedef enum int {OP1_ADDR = 32'hFFFF0000,
                     OP2_ADDR = 32'hFFFF0004,
@@ -18,15 +19,22 @@ package fpu_apb_package;
   //==================================================================================
   // Classes
   //==================================================================================
+  `include "../FPU_tb/fpu_config.sv"
   `include "../FPU_tb/fpu_seq_item.sv"
   `include "fpu_apb_seq_item.sv"
   `include "fpu_apb_sequence.sv"
   `include "fpu_apb_sequencer.sv"
+  `include "../FPU_tb/fpu_sequencer.sv"
+  `include "../FPU_tb/fpu_driver.sv"
   `include "fpu_apb_driver.sv"
   `include "fpu_apb_monitor_in.sv"
   `include "fpu_apb_monitor_out.sv"
+  `include "../FPU_tb/fpu_monitor_in.sv"
+  `include "../FPU_tb/fpu_monitor_out.sv"
   `include "fpu_apb_agent.sv"
+  `include"../FPU_tb/fpu_agent.sv"
   `include "../FPU_tb/fpu_scoreboard.sv"
+  `include "../FPU_tb/fpu_coverage.sv"
   `include "fpu_apb_coverage.sv"
   `include "fpu_apb_env.sv"
   `include "fpu_apb_test.sv"

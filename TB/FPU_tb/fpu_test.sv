@@ -6,6 +6,9 @@ class fpu_test extends uvm_test;
   fpu_env m_fpu_env;
   fpu_sequence m_fpu_seq;
 
+  //Configuration object handle
+  fpu_config m_config;
+
   // Constructor
   function new(string name = "fpu_test", uvm_component parent);
     super.new(name, parent);
@@ -16,6 +19,10 @@ class fpu_test extends uvm_test;
     super.build_phase(phase);
     m_fpu_seq = fpu_sequence::type_id::create("m_fpu_seq");
     m_fpu_env = fpu_env::type_id::create("m_fpu_env", this);
+    //Configuration
+    m_config = fpu_config::type_id::create("m_config", this);
+    m_config.is_active = UVM_ACTIVE; // Set the FPU agent to active mode
+    uvm_config_db#(fpu_config)::set(this, "*", "fpu_config", m_config);
   endfunction
 
   // Run phase

@@ -13,8 +13,9 @@ module fpu_apb_top;
     $dumpvars;
   end
 
-  // INTERFACE INSTANTIATION
+  // INTERFACES INSTANTIATION
   fpu_apb_if INTF(CLK);
+  fpu_if fpu_intf(CLK);
 
   //DUT INSTANTIATION
   FPU_apb DUT(
@@ -29,10 +30,35 @@ module fpu_apb_top;
   .PREADY(INTF.PREADY),
   .PSLVERR(INTF.PSLVERR)
   );
+  bit rstn;
+
+bit [31:0] OP1;
+bit [31:0] OP2;
+bit [2:0]  OP_select;
+
+
+logic  data_valid;
+logic  zero_flag;
+logic  INF_flag;
+logic  NAN_flag;
+
+logic [31:0] Result;
+
+  //ASSIGNING FPU INTERFACE SIGNALS TO FPU APB INTERNAL SIGNALS
+  assign fpu_intf.rstn = DUT.FPU1.rstn;
+  assign fpu_intf.OP1 = DUT.FPU1.OP1;
+  assign fpu_intf.OP2 = DUT.FPU1.OP2;
+  assign fpu_intf.OP_select = DUT.FPU1.OP_select;
+  assign fpu_intf.data_valid = DUT.FPU1.data_valid;
+  assign fpu_intf.zero_flag = DUT.FPU1.zero_flag;
+  assign fpu_intf.INF_flag = DUT.FPU1.INF_flag;
+  assign fpu_intf.NAN_flag = DUT.FPU1.NAN_flag;
+  assign fpu_intf.Result = DUT.FPU1.Result;
 
   // UVM CONFIGURATION
   initial begin
     uvm_config_db#(virtual fpu_apb_if)::set(null,"*","vif",INTF);
+    uvm_config_db#(virtual fpu_if)::set(null,"*","fpu_vif",fpu_intf);
   end
 
   //RUNNING UVM TEST

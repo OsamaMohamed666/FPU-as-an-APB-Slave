@@ -30,7 +30,7 @@ module fpu_top;
 
   initial begin
     // configure virtual interface
-    uvm_config_db#(virtual fpu_if)::set(null, "*", "vif", intf);
+    uvm_config_db#(virtual fpu_if)::set(null, "*", "fpu_vif", intf);
      // Dump waves
     $dumpfile("fpu_top.vcd");
     $dumpvars;

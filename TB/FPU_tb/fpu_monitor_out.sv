@@ -19,8 +19,8 @@ class fpu_monitor_out extends uvm_monitor;
   //BUILD PHASE
   function void build_phase (uvm_phase phase);
     super.build_phase(phase);
-    if(!uvm_config_db #(virtual fpu_if)::get(this,"","vif",vif))
-      `uvm_fatal (get_name(),"ERROR IN BUILDING FPU MONITOR INPUT")
+    if(!uvm_config_db #(virtual fpu_if)::get(this,"","fpu_vif",vif))
+      `uvm_fatal (get_name(),"ERROR IN BUILDING FPU MONITOR OUTPUT")
   endfunction
 
   //RUN PHASE
@@ -38,7 +38,7 @@ class fpu_monitor_out extends uvm_monitor;
       m_seq_item.Result = vif.Result;
       m_seq_item.data_valid = vif.data_valid;
 
-      if(fpu_package::detect_new_fpu_operation) begin
+      if(fpu_apb_package::detect_new_fpu_operation) begin
         item_collect_port_out.write(m_seq_item);
       end
     end
