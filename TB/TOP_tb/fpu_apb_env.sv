@@ -29,6 +29,9 @@ class fpu_apb_env extends uvm_env;
     // FPU Classes
     m_fpu_agent = fpu_agent::type_id::create("m_fpu_agent",this);
     m_fpu_cov = fpu_coverage::type_id::create("m_fpu_cov",this);
+    // Configuration
+    m_fpu_config = fpu_config::type_id::create("m_fpu_config", this);
+    uvm_config_db#(fpu_config)::set(this, "m_fpu_agent", "fpu_config", m_fpu_config);
     // FPU_APB Classes
     m_apb_agent = fpu_apb_agent::type_id::create("m_apb_agent",this);
     m_apb_cov = fpu_apb_coverage::type_id::create("m_apb_cov",this);

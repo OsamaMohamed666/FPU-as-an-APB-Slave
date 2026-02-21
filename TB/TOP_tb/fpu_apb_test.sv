@@ -20,7 +20,7 @@ class fpu_apb_test extends uvm_test;
     //Configuration
     m_fpu_config = fpu_config::type_id::create("m_fpu_config", this);
     m_fpu_config.is_active = UVM_PASSIVE; // Set the FPU agent to passive mode
-    uvm_config_db#(fpu_config)::set(this, "*", "fpu_config", m_fpu_config);
+    uvm_config_db#(fpu_config)::set(this, "m_fpu_apb_env", "fpu_config", m_fpu_config);
   endfunction
 
   //RUN PHASE
