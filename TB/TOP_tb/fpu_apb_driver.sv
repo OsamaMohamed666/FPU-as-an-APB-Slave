@@ -6,7 +6,7 @@ class fpu_apb_driver extends uvm_driver #(fpu_apb_seq_item);
   virtual fpu_apb_if.driver_mp  vif;
 
   //SEQUENCE ITEM
-  fpu_apb_seq_item req,rsp;
+  fpu_apb_seq_item req;
 
   //CONSTRUCTOR
   function new (string name = "fpu_apb_driver", uvm_component parent);
@@ -24,26 +24,13 @@ class fpu_apb_driver extends uvm_driver #(fpu_apb_seq_item);
   //RUN PHASE
   virtual task run_phase(uvm_phase phase);
     req = fpu_apb_seq_item::type_id::create("req");
-    rsp = fpu_apb_seq_item::type_id::create("rsp");
     //Reseting
     reset();
     forever begin
       seq_item_port.get_next_item(req);
-      addr_sequences();
-      //Setting the response info
-      rsp.set_id_info(req);   // copies sequence_id & transaction_id
-      if(vif.cb.PADDR == fpu_apb_package::OP2_ADDR) begin
-        rsp.op_select_phase = 1;
-        rsp.op2_exponent = req.PWDATA[30:23];
-        `uvm_info(get_type_name(), $sformatf("OPERATION SELECT PHASE ACTIVATED! PADDR: %h", vif.cb.PADDR), UVM_HIGH);
-      end
-
-      else begin
-        rsp.op_select_phase = 0;
-        `uvm_info(get_type_name(), $sformatf("OPERATION SELECT PHASE DEACTIVATED! PADDR: %h", vif.cb.PADDR), UVM_HIGH);
-      end
-
-        seq_item_port.item_done(rsp);
+        setup();
+        access();
+      seq_item_port.item_done();
     end
   endtask
 
@@ -61,17 +48,13 @@ class fpu_apb_driver extends uvm_driver #(fpu_apb_seq_item);
   endtask
 
   //TASK: SETUP
-  task setup (int c, bit a);
+  task setup;
     @(vif.cb iff vif.RSTN);
     vif.cb.PSEL     <= req.PSEL;
     vif.cb.PENABLE  <= 1'b0;
-    vif.cb.PADDR    <= c;
+    vif.cb.PADDR    <= req.PADDR;
     vif.cb.PWDATA   <= req.PWDATA;
-    vif.cb.PWRITE   <= a;
-
-    if(c == fpu_apb_package::OP1_ADDR) begin
-      rsp.op1_exponent = req.PWDATA[30:23];
-    end
+    vif.cb.PWRITE   <= req.PWRITE;
   endtask
 
   //TASK: ACCESS
@@ -85,29 +68,6 @@ class fpu_apb_driver extends uvm_driver #(fpu_apb_seq_item);
       @(vif.cb);
   endtask
 
-  // The sequence of addresses of OP1 to .... RESULT
-  static bit[3:0] n;
-  task addr_sequences;
-    bit wr_en; // high > write, low > read
-    addr_e addr;
-    int enum_total_num;
-    enum_total_num = addr.num();
-    addr = addr.first();
-    addr = addr.next(n);
-
-    if((addr == fpu_apb_package::FLAGS_ADDR) || (addr == fpu_apb_package::RESULT_ADDR))
-      wr_en = 0;
-    else
-      wr_en = 1;
-
-    setup(addr,wr_en);
-    access();
-
-    if(n == (enum_total_num - 1))
-      n=0;
-    else
-      n++;
-    endtask
 
     // Sequence in which the addresses are accessed: OP1 -> OP2 -> OPERATION SELECT -> FLAGS -> RESULT
     //task addr_sequence;

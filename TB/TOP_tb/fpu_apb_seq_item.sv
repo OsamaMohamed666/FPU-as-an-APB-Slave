@@ -11,7 +11,7 @@ class fpu_apb_seq_item extends uvm_sequence_item;
   rand  bit             RSTN;
   rand  bit             PSEL;
   rand  bit             PWRITE;
-  rand  bit             PENABLE;
+        bit             PENABLE;
   rand  bit      [31:0] PADDR;
   rand  bit      [31:0] PWDATA;
 
@@ -19,10 +19,6 @@ class fpu_apb_seq_item extends uvm_sequence_item;
   logic                 PREADY;
   logic                 PSLVERR;
 
-  // RESPONSE INFO
-  bit op_select_phase;
-  bit [7:0] op1_exponent;
-  bit [7:0] op2_exponent;
 
 
   //==================================================================================
@@ -42,16 +38,11 @@ class fpu_apb_seq_item extends uvm_sequence_item;
   // }
 
   //3) INCREASING THE CHANCE OF HITING USABLE OPERTIONS
-  // constraint opertion_select_c{
-  //   solve PADDR before PWDATA;
-  //   if(PADDR == 32'hFFFF0008) {
-  //     PWDATA[2:0] dist {[0:2] :/ 98, [3:7]:/ 2};
-  //     if (PWDATA[2:0] == 3'b010) {
-  //       (PWDATA[30:23] != 0); }
-  //     }
-  //   }
-
-
-
+  constraint opertion_select_c{
+    solve PADDR before PWDATA;
+    if(PADDR == 32'hFFFF0008) {
+      PWDATA[2:0] dist {[0:2] :/ 98, [3:7]:/ 2};
+    }
+    }
 
 endclass

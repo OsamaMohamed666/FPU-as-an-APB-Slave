@@ -3,7 +3,7 @@ package fpu_apb_package;
   `include "uvm_macros.svh"
 
   //PACKAGE PARAMETERS
-  parameter int SEQUENCES = 5*100000; //number of sequences to run in the test
+  parameter int SEQUENCES = 500000; //number of sequences to run in the test
   parameter int CLK_PERIOD = 10;
 
   //DETECTING NEW FPU OPERATION
