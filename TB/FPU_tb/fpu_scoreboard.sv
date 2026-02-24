@@ -135,7 +135,7 @@ class fpu_scoreboard extends uvm_scoreboard;
       err_cnt++;
         `uvm_info(get_type_name(),$sformatf("OP1 = %h, OP2 = %h, OP_SELECT = %0d",
                                 sb_item_in.OP1,sb_item_in.OP2, sb_item_in.OP_select),UVM_NONE)
-        `uvm_fatal (get_type_name(), $sformatf("ERROR IN FPU OPERATION (%0d) EXPECTED RESULT = %h ,DUT RESULT = %h",
+        `uvm_error (get_type_name(), $sformatf("ERROR IN FPU OPERATION (%0d) EXPECTED RESULT = %h ,DUT RESULT = %h",
                                 sb_item_in.OP_select, exp_result, dut_result))
       end
     end
