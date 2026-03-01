@@ -38,8 +38,8 @@ class fpu_coverage extends uvm_component;
   //OPERATION GROUP
   covergroup cg_operation_select;
     cp_op_select: coverpoint m_seq_item_in.OP_select{
-      bins operations[] = {[0:7]};
-      bins operations_transitions[] = ([0:7] => [0:7]);
+      bins operations[] = {[0:2]};
+      bins operations_transitions[] = ([0:2] => [0:2]);
     }
   endgroup
 

@@ -5,4 +5,5 @@
 fpu_apb_package.sv
 fpu_apb_if.sv
 ../FPU_tb/fpu_if.sv
+../RAL/ral_reg_bank_if.sv
 fpu_apb_top.sv

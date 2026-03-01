@@ -7,6 +7,7 @@ class fpu_apb_test extends uvm_test;
 
   //Configuration object handle
   fpu_config m_fpu_config;
+  fpu_apb_config m_fpu_apb_config;
 
   //CONSTRUCTOR
   function new (string name = "fpu_apb_test", uvm_component parent);
@@ -17,7 +18,13 @@ class fpu_apb_test extends uvm_test;
   function void build_phase(uvm_phase phase);
     super.build_phase(phase);
     m_fpu_apb_env = fpu_apb_env::type_id::create("m_fpu_apb_env",this);
-    //Configuration
+
+    //Configuration for FPU_APB Agent
+    m_fpu_apb_config = fpu_apb_config::type_id::create("m_fpu_apb_config", this);
+    m_fpu_apb_config.is_active = UVM_ACTIVE; // Set the FPU_APB agent to active mode
+    uvm_config_db#(fpu_apb_config)::set(this, "m_fpu_apb_env", "fpu_apb_config", m_fpu_apb_config);
+
+    //Configuration for FPU Agent
     m_fpu_config = fpu_config::type_id::create("m_fpu_config", this);
     m_fpu_config.is_active = UVM_PASSIVE; // Set the FPU agent to passive mode
     uvm_config_db#(fpu_config)::set(this, "m_fpu_apb_env", "fpu_config", m_fpu_config);

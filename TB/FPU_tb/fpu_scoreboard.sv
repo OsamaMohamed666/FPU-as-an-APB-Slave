@@ -40,6 +40,10 @@ class fpu_scoreboard extends uvm_scoreboard;
   //Seq item for scoreboard to get from queues
   fpu_seq_item sb_item_in, sb_item_out;
 
+  //==================================================================================
+  //DATA MEMBERS FOR THE SCOREBOARD
+  //==================================================================================
+
   //Floating point single precision operands and result
   shortreal op1_fp, op2_fp,
             exp_result_fp;
@@ -166,11 +170,13 @@ class fpu_scoreboard extends uvm_scoreboard;
   //FUNCTION: REPORT PHASE
   function void report_phase(uvm_phase phase);
     super.report_phase(phase);
-    `uvm_info("REPORT PHASE: FPU OPERATION",$sformatf("Successful checks:%0d",crr_cnt), UVM_NONE);
-    `uvm_info("REPORT PHASE: FPU OPERATION",$sformatf("Unsuccessful checks:%0d",err_cnt),UVM_NONE);
-    `uvm_info("REPORT PHASE: FPU OPERATION",$sformatf("Addition operations:%0d",add_cnt),UVM_NONE);
-    `uvm_info("REPORT PHASE: FPU OPERATION",$sformatf("Subtraction operations:%0d",sub_cnt),UVM_NONE);
-    `uvm_info("REPORT PHASE: FPU OPERATION",$sformatf("Multiplication operations:%0d",mul_cnt),UVM_NONE);
-    `uvm_info("REPORT PHASE: FPU OPERATION",$sformatf("Default operations:%0d",def_cnt),UVM_NONE);
+    `uvm_info("FPU OPERATION", $sformatf("\n\nFPU_SCOREBOARD SUMMARY:\n%s", `DASH_LINE), UVM_NONE)
+    `uvm_info("FPU OPERATION",$sformatf("Successful Cases:%0d",crr_cnt), UVM_NONE);
+    `uvm_info("FPU OPERATION",$sformatf("Unsuccessful Cases:%0d",err_cnt),UVM_NONE);
+    `uvm_info("FPU OPERATION",$sformatf("Addition operations Count:%0d",add_cnt),UVM_NONE);
+    `uvm_info("FPU OPERATION",$sformatf("Subtraction operations Count:%0d",sub_cnt),UVM_NONE);
+    `uvm_info("FPU OPERATION",$sformatf("Multiplication operations Count:%0d",mul_cnt),UVM_NONE);
+    `uvm_info("FPU OPERATION",$sformatf("Default operations Count:%0d",def_cnt),UVM_NONE);
+    `uvm_info("FPU OPERATION", $sformatf("DONE \n%s", `DASH_LINE), UVM_NONE)
   endfunction
 endclass

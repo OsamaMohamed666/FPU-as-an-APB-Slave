@@ -16,6 +16,7 @@ module fpu_apb_top;
   // INTERFACES INSTANTIATION
   fpu_apb_if INTF(CLK);
   fpu_if fpu_intf(CLK);
+  ral_reg_bank_if ral_intf(CLK);
 
   //DUT INSTANTIATION
   FPU_apb DUT(
@@ -55,10 +56,23 @@ logic [31:0] Result;
   assign fpu_intf.NAN_flag = DUT.FPU1.NAN_flag;
   assign fpu_intf.Result = DUT.FPU1.Result;
 
+  //ASSIGNING RAL INTERFACE SIGNALS TO FPU APB INTERNAL SIGNALS
+  assign ral_intf.rstn = DUT.RSTN;
+  assign ral_intf.enable_register = DUT.enable_register;
+  assign ral_intf.register_addr = DUT.register_addr;
+  assign ral_intf.PWDATA = DUT.PWDATA;
+  assign ral_intf.write_enable = DUT.write_enable;
+  assign ral_intf.read_enable = DUT.read_enable;
+  assign ral_intf.PRDATA = DUT.PRDATA;
+  assign ral_intf.OP1 = DUT.FPU1.OP1;
+  assign ral_intf.OP2 = DUT.FPU1.OP2;
+  assign ral_intf.OP_select = DUT.FPU1.OP_select;
+
   // UVM CONFIGURATION
   initial begin
     uvm_config_db#(virtual fpu_apb_if)::set(null,"*","vif",INTF);
     uvm_config_db#(virtual fpu_if)::set(null,"*","fpu_vif",fpu_intf);
+    uvm_config_db#(virtual ral_reg_bank_if)::set(null,"*","reg_bank_vif",ral_intf);
   end
 
   //RUNNING UVM TEST
