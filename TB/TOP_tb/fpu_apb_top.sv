@@ -77,6 +77,6 @@ logic [31:0] Result;
 
   //RUNNING UVM TEST
   initial begin
-    run_test("fpu_apb_test");
+    run_test("fpu_apb_corner_test");
   end
 endmodule

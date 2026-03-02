@@ -1,16 +1,16 @@
-class fpu_apb_test extends uvm_test;
-  `uvm_component_utils(fpu_apb_test)
+class fpu_apb_base_test extends uvm_test;
+  `uvm_component_utils(fpu_apb_base_test)
 
   // Environment and sequence handles
   fpu_apb_env    m_fpu_apb_env;
-  fpu_apb_sequence m_fpu_apb_seq;
+  fpu_apb_base_sequence m_fpu_apb_seq;
 
   //Configuration object handle
   fpu_config m_fpu_config;
   fpu_apb_config m_fpu_apb_config;
 
   //CONSTRUCTOR
-  function new (string name = "fpu_apb_test", uvm_component parent);
+  function new (string name = "fpu_apb_base_test", uvm_component parent);
     super.new(name,parent);
   endfunction
 
@@ -31,8 +31,8 @@ class fpu_apb_test extends uvm_test;
   endfunction
 
   //RUN PHASE
-  task run_phase(uvm_phase phase);
-    m_fpu_apb_seq = fpu_apb_sequence::type_id::create("m_fpu_apb_seq");
+  virtual task run_phase(uvm_phase phase);
+    m_fpu_apb_seq = fpu_apb_base_sequence::type_id::create("m_fpu_apb_seq");
 
     phase.raise_objection(this);
       m_fpu_apb_seq.start(m_fpu_apb_env.m_apb_agent.m_sequencer);
@@ -75,3 +75,20 @@ class fpu_apb_test extends uvm_test;
   endfunction
 
 endclass
+
+class fpu_apb_corner_test extends fpu_apb_base_test;
+  `uvm_component_utils(fpu_apb_corner_test)
+
+  //fpu_apb_corner_sequence m_direct_seq;
+
+  function new (string name = "fpu_apb_corner_test", uvm_component parent);
+    super.new(name,parent);
+  endfunction
+
+  //BUILD PHASE
+  function void build_phase(uvm_phase phase);
+    super.build_phase(phase);
+    fpu_apb_base_sequence::type_id::set_type_override(fpu_apb_corner_sequence::get_type());
+  endfunction
+endclass
+

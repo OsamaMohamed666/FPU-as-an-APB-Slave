@@ -20,7 +20,7 @@ class fpu_coverage extends uvm_component;
       bins  all_ones = {32'hffff_ffff};
       bins  zero     = {32'h0};
       bins  minimum_value = {32'hFF7F_FFFF};
-      bins  maximum_value = {32'hFF7F_FFFF};
+      bins  maximum_value = {32'h7F7F_FFFF};
       bins  others  = default;
     }
 
@@ -47,10 +47,12 @@ class fpu_coverage extends uvm_component;
   covergroup cg_outputs;
     //FPU RESULT
     cp_fpu_result: coverpoint m_seq_item_out.Result {
-      bins  all_ones = {32'hffff_ffff};
+      bins  pos_infinity = {32'h7F80_0000};
+      bins  neg_infinity = {32'hFF80_0000};
+      bins  all_ones_NAN = {32'hffff_ffff}; //Not a number scenario
       bins  zero     = {32'h0};
       bins  minimum_value = {32'hFF7F_FFFF};
-      bins  maximum_value = {32'h7F7FFFFF};
+      bins  maximum_value = {32'h7F7F_FFFF};
       bins  others  = default;
     }
 

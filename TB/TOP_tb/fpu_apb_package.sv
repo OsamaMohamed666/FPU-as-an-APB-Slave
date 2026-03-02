@@ -6,7 +6,7 @@ package fpu_apb_package;
 
 
   //PACKAGE PARAMETERS
-  parameter int SEQUENCES = 5000; //number of sequences to run in the test
+  parameter int SEQUENCES = 50000; //number of sequences to run in the test
   parameter int CLK_PERIOD = 10;
 
   //DETECTING NEW FPU OPERATION
@@ -53,7 +53,7 @@ package fpu_apb_package;
   //FPU_APB classes
   `include "fpu_apb_config.sv"
   `include "fpu_apb_seq_item.sv"
-  `include "fpu_apb_sequence.sv"
+  `include "fpu_apb_sequences.sv"
   `include "fpu_apb_sequencer.sv"
   `include "fpu_apb_driver.sv"
   `include "fpu_apb_monitor_in.sv"
@@ -61,7 +61,7 @@ package fpu_apb_package;
   `include "fpu_apb_agent.sv"
   `include "fpu_apb_coverage.sv"
   `include "fpu_apb_env.sv"
-  `include "fpu_apb_test.sv"
+  `include "fpu_apb_tests.sv"
 
 endpackage
 
