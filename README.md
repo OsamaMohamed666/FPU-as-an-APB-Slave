@@ -1,2 +1,2 @@
 # FPU-as-an-APB-Slave
-The goal is to design and verify the complete system, starting with a single-precision FPU that supports addition, subtraction, and multiplication, and then integrating it as a slave into an APB interface
+The objective is to verify the entire system, beginning with a single-precision Floating Point Unit (FPU) that performs addition, subtraction, and multiplication operations, followed by its integration as a slave component into an APB interface.
